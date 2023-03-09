@@ -1,5 +1,6 @@
 * {
   font-family: "Poppins";
+  overflow: hidden;
   box-sizing: border-box;
 }
 
@@ -110,4 +111,72 @@ body {
   display: flex;
   justify-content: flex-end;
   padding: 10px 16px;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 600px) {
+  /* Smartphones */
+  #title {
+    font-size: 42px;
+  }
+
+  .box-container {
+    width: calc(100% - 40px);
+  }
+
+  .grand-prix-label {
+    display: none;
+  }
+
+  .grand-prix-separator {
+    display: none;
+  }
+
+  .box-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .days-container,
+  .hours-container,
+  .minutes-container,
+  .seconds-container {
+    width: 95px;
+    padding: 5px 0;
+  }
+
+  .days-container,
+  .hours-container,
+  .minutes-container {
+    border-right: none;
+    border-bottom: 2px solid #ffffff;
+  }
+
+  .virtual-clock-container {
+    border-top: 2px solid #ffffff;
+    width: calc(100% - 16px);
+    text-align: center;
+  }
+
+  .value {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  .label {
+    font-size: 22px;
+    margin-top: 2px;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  /* Tablets, laptops, small desktops */
+  #title {
+    font-size: 92px;
+  }
+
+  .value {
+    line-height: 48px;
+  }
 }
