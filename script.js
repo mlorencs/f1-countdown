@@ -117,6 +117,21 @@ const data = [
   },
 ];
 
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 function sortByDate(arr) {
   return arr.sort(function (d1, d2) {
     // Turn your strings into Dates, and then subtract them
@@ -133,12 +148,27 @@ const gpIndex = sortedData.findIndex((gp) => currentDate < new Date(gp.date));
 
 const gpDate = new Date(sortedData[gpIndex].date);
 
+const gpDateOfMonth = gpDate.getDate();
+let ordinal = "th";
+
+if (gpDateOfMonth === 1) {
+  ordinal = "st";
+} else if (gpDateOfMonth === 2) {
+  ordinal = "nd";
+} else if (gpDateOfMonth === 3) {
+  ordinal = "rd";
+}
+
 document.getElementById(
   "title"
 ).innerHTML = `F1 ${currentDate.getFullYear()} Season`;
 
 document.getElementById("gp-country").src = sortedData[gpIndex].country;
 document.getElementById("gp-name").innerHTML = sortedData[gpIndex].name;
+
+document.getElementById("date-value").innerHTML = `${gpDateOfMonth}${ordinal} ${
+  months[gpDate.getMonth()]
+}`;
 
 function countDown() {
   let interval = setInterval(function () {

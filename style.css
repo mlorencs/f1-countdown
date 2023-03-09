@@ -40,7 +40,7 @@ body {
 .box-container {
   border-radius: 8px;
   background-color: rgba(225, 6, 0, 0.7);
-  width: 700px;
+  width: 750px;
   color: #ffffff;
   margin: auto 0;
   transform: translateY(-40px);
@@ -104,4 +104,10 @@ body {
   font-size: 32px;
   text-transform: uppercase;
   margin-top: 10px;
+}
+
+.box-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 16px;
 }
