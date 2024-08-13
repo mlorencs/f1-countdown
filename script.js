@@ -94,16 +94,14 @@ function countDown(gpDate) {
 }
 
 window.onload = async () => {
-    const data = await fetch(`./assets/archive/f1${currentYear}.json`);
+    const response = await fetch(`./assets/archive/f1${currentYear}.json`);
+    const data = response.json();
 
     const sortedData = sortByDate(data);
 
     const gpIndex = sortedData.findIndex((gp) => currentDate < new Date(gp.date));
 
     const gpDate = new Date(sortedData[gpIndex].date);
-
-    console.log("data:", data);
-    console.log("gpDate", gpDate);
 
     loadData(gpDate);
     countDown(gpDate);
