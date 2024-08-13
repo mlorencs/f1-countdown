@@ -11,45 +11,48 @@ function sortByDate(arr) {
     });
 }
 
-const data = await fetch(`./assets/archive/f1${currentYear}.json`);
+async function loadData() {
+    const data = await fetch(`./assets/archive/f1${currentYear}.json`);
 
-const sortedData = sortByDate(data);
+    const sortedData = sortByDate(data);
 
-const gpIndex = sortedData.findIndex((gp) => currentDate < new Date(gp.date));
+    const gpIndex = sortedData.findIndex((gp) => currentDate < new Date(gp.date));
 
-const gpDate = new Date(sortedData[gpIndex].date);
+    const gpDate = new Date(sortedData[gpIndex].date);
 
-const gpDateOfMonth = gpDate.getDate();
-let ordinal = "th";
+    const gpDateOfMonth = gpDate.getDate();
+    let ordinal = "th";
 
-if (gpDateOfMonth === 1) {
-    ordinal = "st";
-} else if (gpDateOfMonth === 2) {
-    ordinal = "nd";
-} else if (gpDateOfMonth === 3) {
-    ordinal = "rd";
+    if (gpDateOfMonth === 1) {
+        ordinal = "st";
+    } else if (gpDateOfMonth === 2) {
+        ordinal = "nd";
+    } else if (gpDateOfMonth === 3) {
+        ordinal = "rd";
+    }
+
+    const gpStartSeconds = gpDate.getSeconds();
+    const gpStartMinutes = gpDate.getMinutes();
+    let gpStartHour = gpDate.getHours();
+
+    if (gpStartHour > 12) {
+        gpStartHour -= 12;
+    }
+
+    document.getElementsByTagName("body")[0].style.backgroundImage = `url(assets/img/f1_constructors_${currentYear - 1}.jpg)`;
+
+    document.getElementById("title").innerHTML = `F1 ${currentYear} Season`;
+
+    document.getElementById("gp-country").src = sortedData[gpIndex].country;
+    document.getElementById("gp-name").innerHTML = sortedData[gpIndex].name;
+
+    document.getElementById("date-value").innerHTML = `${gpDateOfMonth}${ordinal} ${months[gpDate.getMonth()]}`;
+
+    // TODO: Improvements to be made to show more precise time
+    document.getElementById("second-hand").style.transform = `rotate(${gpStartSeconds * (360 / 60)}deg)`;
+    document.getElementById("minute-hand").style.transform = `rotate(${gpStartMinutes * (360 / 60)}deg)`;
+    document.getElementById("hour-hand").style.transform = `rotate(${gpStartHour * (360 / 12)}deg)`;
 }
-
-const gpStartSeconds = gpDate.getSeconds();
-const gpStartMinutes = gpDate.getMinutes();
-let gpStartHour = gpDate.getHours();
-
-if (gpStartHour > 12) {
-    gpStartHour -= 12;
-}
-
-document.getElementsByTagName("body")[0].style.backgroundImage = `url(assets/img/f1_constructors_${currentYear - 1}.jpg)`;
-
-document.getElementById("title").innerHTML = `F1 ${currentYear} Season`;
-
-document.getElementById("gp-country").src = sortedData[gpIndex].country;
-document.getElementById("gp-name").innerHTML = sortedData[gpIndex].name;
-
-document.getElementById("date-value").innerHTML = `${gpDateOfMonth}${ordinal} ${months[gpDate.getMonth()]}`;
-
-document.getElementById("second-hand").style.transform = `rotate(${gpStartSeconds * (360 / 60)}deg)`;
-document.getElementById("minute-hand").style.transform = `rotate(${gpStartMinutes * (360 / 60)}deg)`;
-document.getElementById("hour-hand").style.transform = `rotate(${gpStartHour * (360 / 12)}deg)`;
 
 function countDown() {
     let interval = setInterval(function () {
@@ -98,4 +101,7 @@ function countDown() {
     }, 1000);
 }
 
-window.onload = countDown();
+window.onload = () => {
+    loadData();
+    countDown();
+};
