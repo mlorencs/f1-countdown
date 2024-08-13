@@ -95,7 +95,7 @@ function countDown(gpDate) {
 
 window.onload = async () => {
     const response = await fetch(`./assets/archive/f1${currentYear}.json`);
-    const data = response.json();
+    const data = await response.json();
 
     const sortedData = sortByDate(data);
 
