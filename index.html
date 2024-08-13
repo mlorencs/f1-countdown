@@ -1,62 +1,56 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>F1 - Grand Prix Countdown</title>
+        <title>F1 - Grand Prix Countdown</title>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="page-overlay"></div>
-    <div class="page-container">
-      <div id="title"></div>
-      <div class="box-container">
-        <div class="box-header">
-          <span class="grand-prix-label">Grand Prix Weekend</span>
-          <span class="grand-prix-separator">-</span>
-          <span class="grand-prix-title">
-            <img id="gp-country" alt="flag" />
-            <span id="gp-name"></span>
-          </span>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="page-overlay"></div>
+        <div class="page-container">
+            <div id="title"></div>
+            <div class="box-container">
+                <div class="box-header">
+                    <span class="grand-prix-label">Grand Prix Weekend</span>
+                    <span class="grand-prix-separator">-</span>
+                    <span class="grand-prix-title">
+                        <img id="gp-country" alt="flag" />
+                        <span id="gp-name"></span>
+                    </span>
+                </div>
+                <div class="box-content">
+                    <div class="days-container">
+                        <div id="days-value" class="value">00</div>
+                        <div class="label">days</div>
+                    </div>
+                    <div class="hours-container">
+                        <div id="hours-value" class="value">00</div>
+                        <div class="label">hrs</div>
+                    </div>
+                    <div class="minutes-container">
+                        <div id="minutes-value" class="value">00</div>
+                        <div class="label">mins</div>
+                    </div>
+                    <div class="seconds-container">
+                        <div id="seconds-value" class="value">00</div>
+                        <div class="label">secs</div>
+                    </div>
+                    <div class="virtual-clock-container"></div>
+                </div>
+                <div class="box-footer">
+                    <span id="date-value"></span>
+                </div>
+            </div>
         </div>
-        <div class="box-content">
-          <div class="days-container">
-            <div id="days-value" class="value">00</div>
-            <div class="label">days</div>
-          </div>
-          <div class="hours-container">
-            <div id="hours-value" class="value">00</div>
-            <div class="label">hrs</div>
-          </div>
-          <div class="minutes-container">
-            <div id="minutes-value" class="value">00</div>
-            <div class="label">mins</div>
-          </div>
-          <div class="seconds-container">
-            <div id="seconds-value" class="value">00</div>
-            <div class="label">secs</div>
-          </div>
-          <div class="virtual-clock-container">Virtual clock (WIP)</div>
-        </div>
-        <div class="box-footer">
-          <span id="date-value"></span>
-        </div>
-      </div>
-    </div>
 
-    <script src="script.js"></script>
-  </body>
+        <script src="script.js"></script>
+    </body>
 </html>
