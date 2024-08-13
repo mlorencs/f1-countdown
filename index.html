@@ -43,7 +43,13 @@
                         <div id="seconds-value" class="value">00</div>
                         <div class="label">secs</div>
                     </div>
-                    <div class="virtual-clock-container"></div>
+                    <div class="virtual-clock-container">
+                        <div class="clock-container">
+                            <div id="second-hand" class="clock-hand"></div>
+                            <div id="minute-hand" class="clock-hand"></div>
+                            <div id="hour-hand" class="clock-hand"></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="box-footer">
                     <span id="date-value"></span>
@@ -51,6 +57,6 @@
             </div>
         </div>
 
-        <script src="script.js"></script>
+        <script type="module" src="script.js"></script>
     </body>
 </html>

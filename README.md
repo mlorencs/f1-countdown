@@ -16,6 +16,5 @@ I am not the author of flag icons. All rights goes to the [lipis](https://github
 
 <br />
 
-- Add virtual clock
-- Add Driver's Championship table
-- Add Constructor's Championship table
+-   Add Driver's Championship table
+-   Add Constructor's Championship table
