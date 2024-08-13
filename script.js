@@ -11,15 +11,7 @@ function sortByDate(arr) {
     });
 }
 
-async function loadData() {
-    const data = await fetch(`./assets/archive/f1${currentYear}.json`);
-
-    const sortedData = sortByDate(data);
-
-    const gpIndex = sortedData.findIndex((gp) => currentDate < new Date(gp.date));
-
-    const gpDate = new Date(sortedData[gpIndex].date);
-
+function loadData(gpDate) {
     const gpDateOfMonth = gpDate.getDate();
     let ordinal = "th";
 
@@ -54,7 +46,7 @@ async function loadData() {
     document.getElementById("hour-hand").style.transform = `rotate(${gpStartHour * (360 / 12)}deg)`;
 }
 
-function countDown() {
+function countDown(gpDate) {
     let interval = setInterval(function () {
         const now = new Date().getTime(); // get today's date and time
 
@@ -101,7 +93,18 @@ function countDown() {
     }, 1000);
 }
 
-window.onload = () => {
-    loadData();
-    countDown();
+window.onload = async () => {
+    const data = await fetch(`./assets/archive/f1${currentYear}.json`);
+
+    const sortedData = sortByDate(data);
+
+    const gpIndex = sortedData.findIndex((gp) => currentDate < new Date(gp.date));
+
+    const gpDate = new Date(sortedData[gpIndex].date);
+
+    console.log("data:", data);
+    console.log("gpDate", gpDate);
+
+    loadData(gpDate);
+    countDown(gpDate);
 };
