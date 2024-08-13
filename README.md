@@ -16,5 +16,6 @@ I am not the author of flag icons. All rights goes to the [lipis](https://github
 
 <br />
 
--   Add Driver's Championship table
--   Add Constructor's Championship table
+-   Use F1 API to get season
+-   Add Driver's Championship table (F1 API)
+-   Add Constructor's Championship table (F1 API)
