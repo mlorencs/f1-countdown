@@ -11,7 +11,7 @@ function sortByDate(arr) {
     });
 }
 
-function loadData(data, gpDate) {
+function loadData(data, index, gpDate) {
     const gpDateOfMonth = gpDate.getDate();
     let ordinal = "th";
 
@@ -35,8 +35,8 @@ function loadData(data, gpDate) {
 
     document.getElementById("title").innerHTML = `F1 ${currentYear} Season`;
 
-    document.getElementById("gp-country").src = data[gpIndex].country;
-    document.getElementById("gp-name").innerHTML = data[gpIndex].name;
+    document.getElementById("gp-country").src = data[index].country;
+    document.getElementById("gp-name").innerHTML = data[index].name;
 
     document.getElementById("date-value").innerHTML = `${gpDateOfMonth}${ordinal} ${months[gpDate.getMonth()]}`;
 
@@ -103,6 +103,6 @@ window.onload = async () => {
 
     const gpDate = new Date(sortedData[gpIndex].date);
 
-    loadData(sortedData, gpDate);
+    loadData(sortedData, gpIndex, gpDate);
     countDown(gpDate);
 };
