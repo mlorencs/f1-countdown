@@ -1,7 +1,19 @@
-const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+];
 
 const currentDate = new Date(Date.now());
-const currentYear = currentDate.getFullYear();
 
 function sortByDate(arr) {
     return arr.sort(function (d1, d2) {
@@ -23,27 +35,12 @@ function loadData(data, index, gpDate) {
         ordinal = "rd";
     }
 
-    const gpStartSeconds = gpDate.getSeconds();
-    const gpStartMinutes = gpDate.getMinutes();
-    let gpStartHour = gpDate.getHours();
-
-    if (gpStartHour > 12) {
-        gpStartHour -= 12;
-    }
-
-    document.getElementsByTagName("body")[0].style.backgroundImage = `url(assets/img/f1_constructors_${currentYear - 1}.jpg)`;
-
-    document.getElementById("title").innerHTML = `F1 ${currentYear} Season`;
-
     document.getElementById("gp-country").src = data[index].country;
     document.getElementById("gp-name").innerHTML = data[index].name;
 
-    document.getElementById("date-value").innerHTML = `${gpDateOfMonth}${ordinal} ${months[gpDate.getMonth()]}`;
-
-    // TODO: Improvements to be made to show more precise time
-    document.getElementById("second-hand").style.transform = `rotate(${gpStartSeconds * (360 / 60)}deg)`;
-    document.getElementById("minute-hand").style.transform = `rotate(${gpStartMinutes * (360 / 60)}deg)`;
-    document.getElementById("hour-hand").style.transform = `rotate(${gpStartHour * (360 / 12)}deg)`;
+    document.getElementById("date-value").innerHTML = `${gpDateOfMonth}${ordinal} ${
+        months[gpDate.getMonth()]
+    }`;
 }
 
 function countDown(gpDate) {
@@ -94,7 +91,7 @@ function countDown(gpDate) {
 }
 
 window.onload = async () => {
-    const response = await fetch(`./assets/archive/f1${currentYear}.json`);
+    const response = await fetch(`./assets/archive/f12025.json`);
     const data = await response.json();
 
     const sortedData = sortByDate(data);
