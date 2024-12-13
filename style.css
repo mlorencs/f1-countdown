@@ -6,53 +6,71 @@
 
 :root {
     --gray-12: #1e1e1e;
+    --gray-85: #d9d9d9;
     --gray-95: #f3f3f3;
+    --gray-96: #f5f5f5;
+    --red: rgb(255, 30, 0);
+    --red-alpha: rgba(255, 30, 0, 0.65);
+    --white: #ffffff;
 }
 
 body {
+    font-family: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+        sans-serif;
+}
+
+button:focus {
+    border-color: transparent !important;
+    outline: 2px solid var(--red);
+}
+
+th,
+td {
+    padding: 16px 12px;
+}
+
+#next-weekend {
     background-color: var(--gray-12);
     background-image: url("assets/img/f1_constructors_2024.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 
-    font-family: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
-        sans-serif;
-
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 100vh;
+    padding: 24px 0;
+    position: relative;
+    z-index: 1;
 }
 
-body::before {
+#next-weekend::before {
     content: "";
     background-color: var(--gray-12);
     height: 100%;
     width: 100%;
     opacity: 0.7;
     position: absolute;
-}
-
-.page-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
+    top: 0;
+    z-index: -1;
 }
 
 #title {
     font-weight: 700;
     font-size: 132px;
     color: var(--gray-95);
-    padding: 20px 0;
+    text-align: center;
 }
 
 .box-container {
     border-radius: 8px;
-    background-color: rgba(255, 30, 0, 0.8);
+    background-color: var(--red-alpha);
     width: 750px;
     color: var(--gray-95);
-    margin: auto 0;
-    transform: translateY(-40px);
+    transform: translateY(-58px);
 }
 
 .box-header {
@@ -70,12 +88,13 @@ body::before {
 .grand-prix-title {
     display: flex;
     align-items: center;
+    gap: 16px;
 }
 
-#gp-country {
+.country-flag {
+    border-radius: 4px;
     display: block;
     width: 40px;
-    margin-right: 10px;
 }
 
 .box-content {
@@ -113,16 +132,102 @@ body::before {
     margin: auto 0;
 }
 
+.button-container {
+    display: flex;
+    gap: 24px;
+}
+
+.button-container button {
+    background: none;
+    border: 1px solid var(--gray-95);
+    border-radius: 4px;
+    color: var(--gray-95);
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 300;
+    height: min-content;
+    padding: 12px 16px;
+    transition: all 0.25s;
+}
+
+.button-container button:hover {
+    background-color: var(--gray-95);
+    color: var(--gray-12);
+}
+
+#full-schedule {
+    background-color: var(--gray-96);
+
+    min-height: 100vh;
+    padding: 24px 13%;
+}
+
+.schedule-table {
+    border-spacing: 0;
+    width: 100%;
+}
+
+.schedule-header {
+    background-color: var(--red);
+    color: var(--gray-95);
+    text-align: left;
+}
+
+.schedule-header th:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.schedule-header th:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.schedule-row:hover,
+.schedule-row.selected {
+    background-color: var(--gray-85);
+    cursor: pointer;
+}
+
+.schedule-date {
+    min-width: 150px;
+}
+
+.schedule-title {
+    width: 100%;
+}
+
+.schedule-status {
+    min-width: 200px;
+}
+
+td.schedule-date {
+    border-bottom: 1px solid var(--gray-85);
+}
+
+td.schedule-title {
+    border-bottom: 1px solid var(--gray-85);
+}
+
+td.schedule-status {
+    border-bottom: 1px solid var(--gray-85);
+}
+
+#championship-standings {
+    background-color: var(--gray-12);
+
+    height: 100vh;
+}
+
 /* MEDIA QUERIES */
 
-@media only screen and (max-width: 749px) {
+@media only screen and (max-width: 764px) {
     /* Smartphones */
     #title {
         font-size: 42px;
     }
 
     .box-container {
-        width: calc(100% - 40px);
+        width: calc(100% - 200px);
+        transform: initial;
     }
 
     .box-content {
@@ -160,9 +265,22 @@ body::before {
     .vertical-divider {
         display: none;
     }
+
+    .button-container button {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
+
+    .schedule-date {
+        min-width: 100px;
+    }
+
+    .schedule-status {
+        min-width: 100px;
+    }
 }
 
-@media only screen and (min-width: 750px) and (max-width: 999px) {
+@media only screen and (min-width: 765px) and (max-width: 1014px) {
     /* Tablets, laptops, small desktops */
     #title {
         font-size: 92px;

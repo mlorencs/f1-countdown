@@ -14,18 +14,18 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800&display=swap"
             rel="stylesheet"
         />
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <div class="page-container">
+        <section id="next-weekend">
             <div id="title">F1 2025 Season</div>
             <div class="box-container">
                 <div class="box-header">
                     <div class="grand-prix-title">
-                        <img id="gp-country" alt="flag" />
+                        <img id="gp-country" class="country-flag" alt="flag" />
                         <span id="gp-name"></span>
                     </div>
                     <div id="date-value"></div>
@@ -52,8 +52,27 @@
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="button-container">
+                <button id="full-schedule-btn">See Full Schedule</button>
+                <button>See Championship Standings</button>
+            </div>
+        </section>
 
-        <script type="module" src="script.js"></script>
+        <section id="full-schedule">
+            <table class="schedule-table">
+                <thead>
+                    <tr class="schedule-header">
+                        <th class="schedule-date">Date</th>
+                        <th class="schedule-title">Name</th>
+                        <th class="schedule-status">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="schedule-rows"></tbody>
+            </table>
+        </section>
+
+        <!-- <section class="championship-standings"></section> -->
+
+        <script type="module" src="main.js"></script>
     </body>
 </html>
